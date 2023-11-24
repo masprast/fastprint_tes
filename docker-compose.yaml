@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  db:
+    # image: postgres:16-alpine
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+      # - ./docker/init.sql:/docker-entrypoint-initdb.d/1-schema.sql
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["executable", "arg"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
