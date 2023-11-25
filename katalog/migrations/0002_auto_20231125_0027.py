@@ -4,16 +4,16 @@ from django.db import migrations
 
 from katalog.models import Kategori, Produk, Status
 from utils import jsonkeobj
-import json
 
 jsonkeobj.konvert()
 # datajson = jsonkeobj.daftar_objek
 def isiDB(apps,skema):
     for i in jsonkeobj.daftar_objek:
+        print(i.kategori)
         Kategori(nama_kategori=i.kategori).save()
         Status(nama_status=i.status).save()
         Produk(
-            id_produk=i.id_produk,
+            id_produk=int(i.id_produk),
             nama_produk=i.nama_produk,
             kategori=i.kategori,
             harga=i.harga,

@@ -1,4 +1,14 @@
--- CREATE ROLE backenduser WITH LOGIN PASSWORD 'backendpass';
-CREATE USER backenduser;
-CREATE DATABASE backendtes;
-GRANT ALL PRIVILEGES ON DATABASE backendtes TO backenduser;
+CREATE ROLE backenduser WITH LOGIN PASSWORD 'backendpass';
+-- CREATE USER backenduser;
+CREATE DATABASE backendtes WITH OWNER backenduser;
+CREATE SCHEMA backendtes AUTHORIZATION backenduser;
+-- ALTER ROLE <user_name> SET search_path TO public, backendtes_schema
+
+-- GRANT ALL PRIVILEGES ON DATABASE backendtes TO backenduser;
+-- ALTER DATABASE backendtes OWNER TO backenduser;
+-- GRANT ALL ON SCHEMA public TO backenduser;
+-- GRANT USAGE, CREATE ON SCHEMA PUBLIC TO public;
+-- REVOKE USAGE, CREATE ON SCHEMA PUBLIC FROM PUBLIC;
+-- GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA PUBLIC TO backenduser;
+-- GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA PUBLIC TO backenduser;
+-- GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA PUBLIC TO backenduser;

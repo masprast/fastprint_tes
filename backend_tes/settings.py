@@ -90,14 +90,15 @@ WSGI_APPLICATION = 'backend_tes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'backendtes',
-        'USER': 'postgresuser',
-        'PASSWORD': 'password',
+        'OPTIONS': {
+                'options': '-c search_path=django,backendtes,public'
+            },
+        'NAME': env("DB_NAME"),
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASS"),
         'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
