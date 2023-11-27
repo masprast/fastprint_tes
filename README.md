@@ -76,13 +76,15 @@ Langkah selanjutnya adalah konfigurasi database, yakni PostgreSQL dalam bentuk c
 > 1. Jalankan aplikasi REST API testing (contoh: Postman)
 > 2. Masukkan alamat tautan API tes programer
 > 3. Set _method_ ke **POST**
-> 4. Lalu jalankan skrip python untuk membuat _password_ yang dienkripsi dengan **md5**, salin ke bagian form pada aplikasi Postman
+> 4. Beralih ke tab _body_ lalu cari inputan _form_ untuk memasukkan _username_ dan _password_
+> 5. Masukkan _username_ sesuai dengan soal tes
+> 6. Lalu jalankan skrip python untuk membuat _password_ yang dienkripsi dengan **md5**, salin ke bagian _form_ pada aplikasi Postman
 >
 > ```sh
 > python3 utils/password_hasher.py
 > ```
 >
-> 5. Simpan respon dari server API dengan nama file **`restapi.json`** ke dalam folder proyek ini.
+> 7. Simpan respon dari server API dengan nama file **`restapi.json`** ke dalam folder proyek ini.
 >
 > - Jika tidak ingin mengambil data baru, lewati langkah ini. Penulis sudah mengunduh data dari server tes API
 >
