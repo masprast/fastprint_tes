@@ -1,5 +1,4 @@
 import json
-from sys import modules
 
 class ProdukJSONClass(json.JSONEncoder):
     def default(self,o):
@@ -18,11 +17,22 @@ class ObjekProduk(object):
         return f"no: {self.no}, id_produk: {self.id_produk}, nama_produk: {self.nama_produk}, kategori: {self.kategori}, harga: {self.harga}, status: {self.status}"
 
 
+f = open('restapi.json')
 daftar_objek = []
+
 def konvert():
-    f = open('restapi.json')
-    # obj_f = json.dumps(f,cls=ProdukJSONClass)
     data = json.load(f)['data']
     for i in data:
         daftar_objek.append(ObjekProduk(**i))
 
+def isiKategori(arr_kategori):
+    arr_ = []
+    for kategori in arr_kategori:
+        arr_.append(kategori.kategori)
+    return list(set(arr_))
+
+def isiStatus(arr_status):
+    arr_ = []
+    for status in arr_status:
+        arr_.append(status.status)
+    return list(set(arr_))
