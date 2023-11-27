@@ -8,8 +8,8 @@ Berikut paket-paket yang dibutuhkan dalam pembuatan API:
 
 1. Python `--` 3.10
 2. virtualenv `--` 20.13
-3. Docker `--` 24.0
-4. Docker Compose `--` 1.29
+3. [Docker](https://docs.docker.com/desktop) `--` 24.0
+4. [Docker Compose](https://docs.docker.com/compose/install/) `--` 1.29
 5. pip `--` 22.0
 
 - sedangkan editor yang digunakan adalah VSCode.
@@ -34,7 +34,7 @@ cd tes_fastprint
 2.  kloning repo dari github.com
 
 ```sh
-git clone https://github.com/masprast/fastprint
+git clone https://github.com/masprast/fastprint_tes
 ```
 
 ---
@@ -139,5 +139,5 @@ _Scroll_ hingga batas bawah dan menemukan _box_ untuk memasukkan data produk bar
 
 4. Mengubah dan menghapus produk
    Untuk mengubah dan menghapus data produk dapat dilakukan pada halaman detil produk
-   ![Tampilan detil produk](gambar_md/detil_update_produk_2.png)
+   ![Tampilan detil produk](gambar_md/detil_update_produk_.png)
    <center>Tampilan detil produk</center>
