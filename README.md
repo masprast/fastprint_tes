@@ -22,20 +22,25 @@ Berikut paket-paket yang dibutuhkan dalam pembuatan API:
 
 Selanjutnya silahkan kloning repo ini ke dalam sebuah folder.
 
-1.  buat folder untuk menampung repo.
+1. buat folder untuk menampung repo.
 
-```sh
-mkdir tes_fastprint
-cd tes_fastprint
-```
+   ```sh
+   mkdir tes_fastprint
+   cd tes_fastprint
+   ```
 
-> penulis menggunakan sistem operasi Linux, untuk sistem operasi lain, silahkan menyesuaikan
+   > penulis menggunakan sistem operasi Linux, untuk sistem operasi lain, silahkan menyesuaikan
 
-2.  kloning repo dari github.com
+2. kloning repo dari github.com
 
-```sh
-git clone https://github.com/masprast/fastprint_tes
-```
+   ```sh
+   git clone https://github.com/masprast/fastprint_tes .
+   ```
+
+<!-- 3. masuk ke folder hasil kloning repositori
+   ```sh
+   cd fastprint_tes
+   ``` -->
 
 ---
 
@@ -43,23 +48,23 @@ git clone https://github.com/masprast/fastprint_tes
 
 Selanjutnya adalah melakukan konfigurasi _environtment_ agar repositori tetap terisolasi, menghindari _conflict_ dengan paket-paket yang yang sama dan telah terinstall pada komputer.
 
-1.  Menyiapkan _environtment_
+1. Menyiapkan _environtment_
 
-```sh
-python3 -m venv env
-```
+   ```sh
+   python3 -m venv env
+   ```
 
-2.  Mengaktifkan _environtment_
+2. Mengaktifkan _environtment_
 
-```sh
-. /env/bin/activate
-```
+   ```sh
+   . /env/bin/activate
+   ```
 
 3. Menginstall paket-paket yang dibutuhkan
 
-```sh
-pip3 install -r requirements.txt
-```
+   ```sh
+   pip3 install -r requirements.txt
+   ```
 
 ---
 
@@ -67,42 +72,42 @@ pip3 install -r requirements.txt
 
 Langkah selanjutnya adalah konfigurasi database, yakni PostgreSQL dalam bentuk container.
 
-1.  Buka terminal dalam VSCode dengan kombinasi `Ctrl + J`
+1. Buka terminal dalam VSCode dengan kombinasi `Ctrl + J`
 
-> #### Menyimpan data dari API ke DB
->
-> Ambil data dari tautan API tes programmer dengan cara sebagai berikut:
->
-> 1. Jalankan aplikasi REST API testing (contoh: Postman)
-> 2. Masukkan alamat tautan API tes programer
-> 3. Set _method_ ke **POST**
-> 4. Beralih ke tab _body_ lalu cari inputan _form_ untuk memasukkan _username_ dan _password_
-> 5. Masukkan _username_ sesuai dengan soal tes
-> 6. Lalu jalankan skrip python untuk membuat _password_ yang dienkripsi dengan **md5**, salin ke bagian _form_ pada aplikasi Postman
->
-> ```sh
-> python3 utils/password_hasher.py
-> ```
->
-> 7. Simpan respon dari server API dengan nama file **`restapi.json`** ke dalam folder proyek ini.
->
-> - Jika tidak ingin mengambil data baru, lewati langkah ini. Penulis sudah mengunduh data dari server tes API
->
->   <br/>
+   > #### Menyimpan data dari API ke DB
+   >
+   > Ambil data dari tautan API tes programmer dengan cara sebagai berikut:
+   >
+   > 1. Jalankan aplikasi REST API testing (contoh: Postman)
+   > 2. Masukkan alamat tautan API tes programer
+   > 3. Set _method_ ke **POST**
+   > 4. Beralih ke tab _body_ lalu cari inputan _form_ untuk memasukkan _username_ dan _password_
+   > 5. Masukkan _username_ sesuai dengan soal tes
+   > 6. Lalu jalankan skrip python untuk membuat _password_ yang dienkripsi dengan **md5**, salin ke bagian _form_ pada aplikasi Postman
+   >
+   > ```sh
+   > python3 utils/password_hasher.py
+   > ```
+   >
+   > 7. Simpan respon dari server API dengan nama file **`restapi.json`** ke dalam folder proyek ini.
+   >
+   > - Jika tidak ingin mengambil data baru, lewati langkah ini. Penulis sudah mengunduh data dari server tes API
+   >
+   >   <br/>
 
 <br/>
 
-2.  Jalankan docker-compose, dan tunggu hingga selesai dan tertera "`LOG:  database system is ready to accept connections`" pada terminal
+2. Jalankan docker-compose, dan tunggu hingga selesai dan tertera "`LOG:  database system is ready to accept connections`" pada terminal
 
-```sh
-docker-compose up --build &
-```
+   ```sh
+   docker-compose up --build &
+   ```
 
-3.  Lalu jalankan perintah
+3. Lalu jalankan perintah
 
-```sh
-python3 manage.py migrate
-```
+   ```sh
+   python3 manage.py migrate
+   ```
 
 ---
 
