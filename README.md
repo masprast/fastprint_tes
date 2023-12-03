@@ -22,25 +22,20 @@ Berikut paket-paket yang dibutuhkan dalam pembuatan API:
 
 Selanjutnya silahkan kloning repo ini ke dalam sebuah folder.
 
-1. buat folder untuk menampung repo.
+1. buat folder untuk menampung repo. ( **_updated_** )
 
    ```sh
-   mkdir tes_fastprint
-   cd tes_fastprint
+   mkdir fastprint_tes
+   cd fastprint_tes
    ```
 
    > penulis menggunakan sistem operasi Linux, untuk sistem operasi lain, silahkan menyesuaikan
 
-2. kloning repo dari github.com
+2. kloning repo dari github.com. ( **_updated_** )
 
    ```sh
    git clone https://github.com/masprast/fastprint_tes .
    ```
-
-<!-- 3. masuk ke folder hasil kloning repositori
-   ```sh
-   cd fastprint_tes
-   ``` -->
 
 ---
 
