@@ -10,9 +10,10 @@ from pathlib import Path
 
 from environ import environ
 
+env = environ.Env()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(os.path.join(BASE_DIR, "backend_tes", ".env"))
-env = environ.Env()
 
 # api_tes = 'https://recruitment.fastprint.co.id/tes/api_tes_programmer'
 api_tes = env("SERVERAPI")
