@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from .models import Kategori, Produk, Status
 from .serializer import KategoriSerializer, ProdukSerializer, StatusSerializer
+from utils import mengisi_db
 
 
 # Create your views here.
@@ -20,4 +21,4 @@ class ListStatus(viewsets.ModelViewSet):
 
 
 class InitDB:
-    pass
+    mengisi_db.isiDB()
