@@ -3,7 +3,7 @@
 # # ############################################################# #
 # #                                                               #
 # #   Script ini berfungsi untuk mengisi data katalog produk ke   #
-# #   dalam DB Postgre yg dikonfigurasi dalam Docker              #
+# #   dalam DB Postgre yg dikonfigurasi dalam Docker/cloud        #
 # #   !!! jalankan script ini hanya SATU kali saja! !!!           #
 # #                                                               #
 # # ############################################################# #

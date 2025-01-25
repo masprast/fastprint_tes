@@ -4,9 +4,18 @@
 
 import datetime
 import hashlib
+import os
 from django.http import response
+from pathlib import Path
 
-api_tes = 'https://recruitment.fastprint.co.id/tes/api_tes_programmer'
+from environ import environ
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(os.path.join(BASE_DIR, "backend_tes", ".env"))
+env = environ.Env()
+
+# api_tes = 'https://recruitment.fastprint.co.id/tes/api_tes_programmer'
+api_tes = env("SERVERAPI")
 # respon_api =response.HttpResponse.request.get('x-form-data')
 
 sekarang = datetime.date.today().strftime("%m-%d-%y")
