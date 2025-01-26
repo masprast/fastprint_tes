@@ -13,6 +13,7 @@ import psycopg2
 import os
 from pathlib import Path
 from environ import environ
+from katalog import models
 
 env = environ.Env()
 
@@ -47,63 +48,73 @@ class ObjekProduk(object):
 def isiDB():
     # mengisi DB
     f = open("restapi.json")
-    obj_f = json.dumps(f, cls=ProdukJSONClass)
+    # obj_f = json.dumps(f, cls=ProdukJSONClass)
     data = json.load(f)["data"]
-    daftar_objek = []
+    daftar_objek = daftar_kategori = daftar_status = []
     for i in data:
         daftar_objek.append(ObjekProduk(**i))
 
     # cek hasil konverter
-    print(daftar_objek[1].__str__())
+    print(len(daftar_objek))
 
     # menghubungi server postgre
     server = psycopg2.connect(
-        database=env("DB_NAME"),
-        user=env("DB_USER"),
-        password=env("DB_PASS"),
-        host=env("DB_HOST"),
-        port=env("DB_PORT"),
+        database=env("PGDATABASE"),
+        user=env("PGUSER"),
+        password=env("PGPASSWORD"),
+        host=env("PGHOST"),
+        port=env("PGPORT"),
     )
+
     server.autocommit = False
     cursor = server.cursor()
 
     # menyimpan data ke tabel
-    for produk in daftar_objek:
-        # k = models.Kategori.objects.create(nama_kategori = produk.kategori)
-        # k.save()
-        # s = models.Status.objects.create(nama_status = produk.status)
-        # s.save()
-        # p = models.Produk.objects.create(
-        #     id_produk = produk.id_produk,
-        #     nama_produk = produk.nama_produk,
-        #     harga = produk.harga,
-        #     kategori = models.Kategori.objects.get(nama_kategori=produk.kategori),
-        #     status = models.Status.objects.get(nama_status=produk.status)
-        #     )
-        # p.save()
-        print(produk)
-        # cursor.execute(f'''
-        #     INSERT INTO KATEGORI(NAMA_KATEGORI)
-        #     VALUES ({produk.kategori})
-        #     ''')
-        # cursor.execute(f'''
-        #     INSERT INTO STATUS(NAMA_STATUS)
-        #     VALUES ({produk.status})
-        #     ''')
-        # cursor.execute(f'''
-        #     INSERT INTO PRODUK(ID_PRODUK, NAMA_PRODUK, HARGA, KATEGORI_ID, STATUS_ID)
-        #     VALUES ({produk.id_produk},{produk.nama_produk},{produk.harga},{produk.kategori},{produk.status})
-        #     ''')
+    for k in daftar_objek:
+        if k not in daftar_kategori:
+            daftar_kategori.append(k.kategori)
 
-    cursor.executemany("insert into kategori(nama_kategori)", daftar_objek)
-    cursor.executemany("insert into status(nama_status)", daftar_objek)
-    cursor.executemany(
-        """
-        insert into produk(id_produk, nama_produk, harga, kategori_id, status_id)
-        values (%i,%s,%s,%s,%s,)
-        """,
-        daftar_objek,
-    )
+    for s in daftar_objek:
+        if s not in daftar_status:
+            daftar_status.append(s.status)
+
+    for dk in daftar_kategori:
+        k = models.Kategori.objects.create(nama_kategori=dk.kategori)
+        k.save()
+        cursor.execute(
+            "insert into katalog_kategori(nama_kategori) values(%s)", (k.__str__())
+        )
+
+    for ds in daftar_status:
+        s = models.Status.objects.create(nama_status=ds.status)
+        s.save()
+        cursor.execute(
+            "insert into katalog_status(nama_status) values(%s)", (s.__str__())
+        )
+
+    for produk in daftar_objek:
+        p = models.Produk.objects.create(
+            id_produk=produk.id_produk,
+            nama_produk=produk.nama_produk,
+            harga=produk.harga,
+            kategori=models.Kategori.objects.get(nama_kategori=produk.kategori),
+            status=models.Status.objects.get(nama_status=produk.status),
+        )
+        p.save()
+
+        cursor.execute(
+            """
+            insert into katalog_produk(id_produk, nama_produk, harga, kategori_id, status_id)
+            values (%i,%s,%s,%s,%s,)
+            """,
+            (
+                p.id_produk.__str__(),
+                p.nama_produk,
+                p.harga.__str__(),
+                p.kategori_id.__str__(),
+                p.status_id.__str__(),
+            ),
+        )
 
     # menyimpan perubahan
     server.commit()
