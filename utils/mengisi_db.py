@@ -11,6 +11,7 @@
 import json
 import psycopg2
 import os
+from django.db import IntegrityError
 from pathlib import Path
 from environ import environ
 from katalog import models
@@ -50,7 +51,9 @@ def isiDB():
     f = open("restapi.json")
     # obj_f = json.dumps(f, cls=ProdukJSONClass)
     data = json.load(f)["data"]
-    daftar_objek = daftar_kategori = daftar_status = []
+    daftar_objek = []
+    daftar_kategori = []
+    daftar_status = []
     for i in data:
         daftar_objek.append(ObjekProduk(**i))
 
@@ -67,54 +70,69 @@ def isiDB():
     )
 
     server.autocommit = False
-    cursor = server.cursor()
+    # cursor = server.cursor()
 
     # menyimpan data ke tabel
     for k in daftar_objek:
-        if k not in daftar_kategori:
-            daftar_kategori.append(k.kategori)
+        if k.kategori not in daftar_kategori:
+            daftar_kategori.insert(0, k.kategori)
 
     for s in daftar_objek:
-        if s not in daftar_status:
-            daftar_status.append(s.status)
+        if s.status not in daftar_status:
+            daftar_status.insert(0, s.status)
 
-    for dk in daftar_kategori:
-        k = models.Kategori.objects.create(nama_kategori=dk.kategori)
-        k.save()
-        cursor.execute(
-            "insert into katalog_kategori(nama_kategori) values(%s)", (k.__str__())
-        )
+        for dk in daftar_kategori:
+            try:
+                k = models.Kategori.objects.create(nama_kategori=dk)
+                k.save()
+            except IntegrityError:
+                pass
+            # cursor.execute(
+            #     "insert into katalog_kategori(nama_kategori) values(%s)", k.__str__()
+            # )
 
-    for ds in daftar_status:
-        s = models.Status.objects.create(nama_status=ds.status)
-        s.save()
-        cursor.execute(
-            "insert into katalog_status(nama_status) values(%s)", (s.__str__())
-        )
+        # cursor.executemany(
+        #     "insert into katalog_kategori(nama_kategori) values(%s)", (daftar_kategori)
+        # )
+        for ds in daftar_status:
+            try:
+                s = models.Status.objects.create(nama_status=ds)
+                s.save()
+            except IntegrityError:
+                pass
+            # cursor.execute(
+            #     "insert into katalog_status(nama_status) values(%s)", (s.__str__())
+            # )
+        # cursor.executemany(
+        #     "insert into katalog_status(nama_status) values(%s)", (daftar_status)
+        # )
 
-    for produk in daftar_objek:
-        p = models.Produk.objects.create(
-            id_produk=produk.id_produk,
-            nama_produk=produk.nama_produk,
-            harga=produk.harga,
-            kategori=models.Kategori.objects.get(nama_kategori=produk.kategori),
-            status=models.Status.objects.get(nama_status=produk.status),
-        )
-        p.save()
+        for produk in daftar_objek:
+            try:
+                p = models.Produk.objects.create(
+                    id_produk=produk.id_produk,
+                    nama_produk=produk.nama_produk,
+                    harga=produk.harga,
+                    kategori=models.Kategori.objects.get(nama_kategori=produk.kategori),
+                    status=models.Status.objects.get(nama_status=produk.status),
+                )
+                p.save()
+            except IntegrityError:
+                pass
 
-        cursor.execute(
-            """
-            insert into katalog_produk(id_produk, nama_produk, harga, kategori_id, status_id)
-            values (%i,%s,%s,%s,%s,)
-            """,
-            (
-                p.id_produk.__str__(),
-                p.nama_produk,
-                p.harga.__str__(),
-                p.kategori_id.__str__(),
-                p.status_id.__str__(),
-            ),
-        )
+            # cursor.execute(
+            #     """
+            #     insert into katalog_produk(id_produk, nama_produk, harga, kategori_id, status_id)
+            #     values (%i,%s,%s,%s,%s,)
+            #     """,
+            #     (
+            #         p.id_produk.__str__(),
+            #         p.nama_produk,
+            #         p.harga.__str__(),
+            #         p.kategori_id.__str__(),
+            #         p.status_id.__str__(),
+            #     ),
+            # )
 
     # menyimpan perubahan
     server.commit()
