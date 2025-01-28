@@ -14,7 +14,7 @@ Berikut paket-paket yang dibutuhkan dalam pembuatan API:
 4. [Docker Compose](https://docs.docker.com/compose/install/) `--` 1.29
 5. pip `--` 22.0
 
-- sedangkan editor yang digunakan adalah VSCode.
+- sedangkan editor yang digunakan adalah **VSCode**.
 
 > Sebelum melakukan pengetesan pastikan paket-paket yang dibutuhkan telah terinstall.
 
