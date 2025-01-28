@@ -21,6 +21,5 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("katalog.urls")),
-    # path("initdb/", include("utils.mengisi_db")),
     # path('rest/',include('rest_framework.urls'))
 ]
