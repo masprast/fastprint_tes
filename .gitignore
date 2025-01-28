@@ -2,3 +2,4 @@
 env/
 tmp/
 backend_tes/.env.copy
+*.sqlite3

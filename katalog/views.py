@@ -20,5 +20,5 @@ class ListStatus(viewsets.ModelViewSet):
     serializer_class = StatusSerializer
 
 
-class InitDB(viewsets.GenericViewSet):
-    mengisi_db.isiDB()
+# class InitDB(viewsets.GenericViewSet):
+#     mengisi_db.isiDB()
