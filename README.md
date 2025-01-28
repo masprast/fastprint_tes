@@ -2,7 +2,7 @@
 
 Repositori ini ditujukan untuk proses rekrutmen untuk posisi _backend developer_. _Tech stack_ yang digunakan untuk repo ini adalah **Django** dan **Docker**.
 
-Demo ada di alamat [](fastprinttes-production.up.railway.app)
+Demo ada di alamat [](fastprinttes-production.up.railway.app/api/katalog)
 
 ## Prerequisites
 
