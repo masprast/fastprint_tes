@@ -8,32 +8,45 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Kategori',
+            name="Kategori",
             fields=[
-                ('id_kategori', models.AutoField(primary_key=True, serialize=False)),
-                ('nama_kategori', models.CharField(max_length=80, unique=True)),
+                ("id_kategori", models.AutoField(primary_key=True, serialize=False)),
+                ("nama_kategori", models.CharField(max_length=80, unique=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Status',
+            name="Status",
             fields=[
-                ('id_status', models.AutoField(primary_key=True, serialize=False)),
-                ('nama_status', models.CharField(max_length=80, unique=True)),
+                ("id_status", models.AutoField(primary_key=True, serialize=False)),
+                ("nama_status", models.CharField(max_length=80, unique=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Produk',
+            name="Produk",
             fields=[
-                ('id_produk', models.AutoField(primary_key=True, serialize=False)),
-                ('nama_produk', models.CharField(max_length=255)),
-                ('harga', models.IntegerField()),
-                ('kategori_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='kategori', to='katalog.kategori')),
-                ('status_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='status', to='katalog.status')),
+                ("id_produk", models.AutoField(primary_key=True, serialize=False)),
+                ("nama_produk", models.CharField(max_length=255)),
+                ("harga", models.IntegerField()),
+                (
+                    "kategori",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="kategori",
+                        to="katalog.kategori",
+                    ),
+                ),
+                (
+                    "status",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="status",
+                        to="katalog.status",
+                    ),
+                ),
             ],
         ),
     ]

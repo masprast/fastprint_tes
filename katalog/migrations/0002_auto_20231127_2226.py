@@ -8,7 +8,9 @@ from katalog.models import Kategori, Produk, Status
 from utils import jsonkeobj
 
 jsonkeobj.konvert()
-def isiDB(apps,schema_editor):
+
+
+def isiDB(apps, schema_editor):
     for kategori in jsonkeobj.isiKategori(jsonkeobj.daftar_objek):
         Kategori(nama_kategori=kategori).save()
 
@@ -19,18 +21,16 @@ def isiDB(apps,schema_editor):
         Produk(
             id_produk=int(j.id_produk),
             nama_produk=j.nama_produk,
-            kategori_id=Kategori.objects.get(nama_kategori=j.kategori),
+            kategori=Kategori.objects.get(nama_kategori=j.kategori),
             harga=j.harga,
-            status_id=Status.objects.get(nama_status=j.status),
-            ).save()
+            status=Status.objects.get(nama_status=j.status),
+        ).save()
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('katalog', '0001_initial'),
+        ("katalog", "0001_initial"),
     ]
 
-    operations = [
-        migrations.RunPython(isiDB)
-    ]
+    operations = [migrations.RunPython(isiDB)]
