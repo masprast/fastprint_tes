@@ -7,7 +7,7 @@ from .serializer import KategoriSerializer, ProdukSerializer, StatusSerializer
 
 # Create your views here.
 class ListProduk(viewsets.ModelViewSet):
-    queryset = Produk.objects.filter(nama_status="bisa dijual").order_by("id_produk")
+    queryset = Produk.objects.filter(status=7).order_by("id_produk")
     serializer_class = ProdukSerializer
 
 
