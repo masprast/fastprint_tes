@@ -6,13 +6,15 @@ from rest_framework import serializers
 class KategoriSerializer(serializers.ModelSerializer):
     class Meta:
         model = Kategori
-        fields = ["nama_kategori"]
+        # fields = ["nama_kategori"]
+        fields = ["__all__"]
 
 
 class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Status
-        fields = ["nama_status"]
+        # fields = ["nama_status"]
+        fields = ["__all__"]
 
 
 class ProdukSerializer(serializers.ModelSerializer):
@@ -26,16 +28,19 @@ class ProdukSerializer(serializers.ModelSerializer):
             RegexValidator(regex=r"^\d+$", message="hanya boleh diisi dengan angka")
         ]
     )
+    kategori = serializers.PrimaryKeyRelatedField()
+    status = serializers.PrimaryKeyRelatedField()
 
     class Meta:
         model = Produk
-        fields = [
-            "id_produk",
-            "nama_produk",
-            "harga",
-            "kategori",
-            "status",
-        ]
+        # fields = [
+        #     "id_produk",
+        #     "nama_produk",
+        #     "harga",
+        #     "kategori",
+        #     "status",
+        # ]
+        fields = ["__all__"]
         extra_kwargs = {
             "kategori": {"write_only": True},
             "status": {"write_only": True},
