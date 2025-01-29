@@ -6,15 +6,13 @@ from rest_framework import serializers
 class KategoriSerializer(serializers.ModelSerializer):
     class Meta:
         model = Kategori
-        # fields = ["nama_kategori"]
-        fields = ["__all__"]
+        fields = ["nama_kategori"]
 
 
 class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Status
-        # fields = ["nama_status"]
-        fields = ["__all__"]
+        fields = ["nama_status"]
 
 
 class ProdukSerializer(serializers.ModelSerializer):
@@ -31,14 +29,13 @@ class ProdukSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Produk
-        # fields = [
-        #     "id_produk",
-        #     "nama_produk",
-        #     "harga",
-        #     "kategori",
-        #     "status",
-        # ]
-        fields = ["__all__"]
+        fields = [
+            "id_produk",
+            "nama_produk",
+            "harga",
+            "kategori",
+            "status",
+        ]
         extra_kwargs = {
             "kategori": {"write_only": True},
             "status": {"write_only": True},
