@@ -28,8 +28,6 @@ class ProdukSerializer(serializers.ModelSerializer):
             RegexValidator(regex=r"^\d+$", message="hanya boleh diisi dengan angka")
         ]
     )
-    kategori = serializers.PrimaryKeyRelatedField()
-    status = serializers.PrimaryKeyRelatedField()
 
     class Meta:
         model = Produk
