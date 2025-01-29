@@ -37,12 +37,14 @@ class ProdukSerializer(serializers.ModelSerializer):
             "status",
         ]
         extra_kwargs = {
+            "harga": {},
             "kategori": {"write_only": True},
             "status": {"write_only": True},
         }
 
     def to_representation(self, instance):
         representasi = super().to_representation(instance)
+        representasi["harga"] = instance.harga
         representasi["no"] = instance.id_produk + 1
         representasi["kategori"] = instance.kategori.nama_kategori
         representasi["status"] = instance.status.nama_status
