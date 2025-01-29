@@ -90,7 +90,7 @@ WSGI_APPLICATION = "backend_tes.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "OPTIONS": {"options": "-c search_path=django,backendtes,public"},
+        # "OPTIONS": {"options": "-c search_path=django,backendtes,public"},
         "NAME": env("PGDATABASE"),
         "USER": env("PGUSER"),
         "PASSWORD": env("PGPASSWORD"),
