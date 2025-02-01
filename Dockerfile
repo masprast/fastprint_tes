@@ -5,6 +5,8 @@ RUN mkdir /app
 
 WORKDIR /app
 
+COPY requirements.txt .
+
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
