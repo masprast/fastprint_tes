@@ -13,10 +13,8 @@ COPY requirements.txt /app/
 
 RUN apk add --no-cache postgresql-libs && \
     apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
+    python3 -m pip install -r requirements.txt --no-cache-dir && \
     apk --purge del .build-deps
-
-ENV PYTHONPATH /usr/lib/python3.10/site-packages
-RUN python3 -m pip install -r requirements.txt --no-cache-dir
 
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -28,7 +26,7 @@ RUN addgroup -S backendgroup && adduser -S backend -G backendgroup && \
 # RUN mkdir /app
 USER backend
 
-COPY --from=builder /usr/local/lib/python3.10/site-packages/ /usr/local/lib/python3.10
+COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
 COPY --from=builder /usr/local/bin /usr/local/bin
 
 WORKDIR /app
