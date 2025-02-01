@@ -13,10 +13,9 @@ COPY requirements.txt /app/
 
 RUN apk add --no-cache postgresql-libs && \
     apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
-    python3 -m pip install -r requirements.txt --no-cache-dir && \
     apk --purge del .build-deps
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 # Stage 2
 FROM python:3.10-alpine
@@ -29,6 +28,7 @@ USER backend
 COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
 COPY --from=builder /usr/local/bin /usr/local/bin
 
+ENV PYTHONPATH /usr/lib/python3.10/dist-packages
 WORKDIR /app
 COPY --chown=backend:backend . .
 
