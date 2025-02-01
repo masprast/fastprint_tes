@@ -11,6 +11,8 @@ services:
       - POSTGRES_DB=backendtes
       - POSTGRES_USER=backenduser
       - POSTGRES_PASSWORD=backendpass
+  django:
+    build: .
 
 volumes:
   postgresdb:

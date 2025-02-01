@@ -6,13 +6,13 @@ from rest_framework import serializers
 class KategoriSerializer(serializers.ModelSerializer):
     class Meta:
         model = Kategori
-        fields = ["nama_kategori"]
+        fields = ["__all__"]
 
 
 class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Status
-        fields = ["nama_status"]
+        fields = ["__all__"]
 
 
 class ProdukSerializer(serializers.ModelSerializer):
