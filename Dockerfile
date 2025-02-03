@@ -41,4 +41,5 @@ ENV PYTHONUNBUFFERED=1
 
 
 EXPOSE 8000
-ENTRYPOINT ["sh","django.sh"]
+
+ENTRYPOINT ["./django.sh"]
