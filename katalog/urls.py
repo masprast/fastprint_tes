@@ -2,10 +2,6 @@ from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 from .views import KategoriViewSet, ProdukViewSet, StatusViewSet
 
-produk_list = ProdukViewSet.as_view({"get": "list", "post": "create"})
-produk_detail = ProdukViewSet.as_view(
-    {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
-)
 
 router = DefaultRouter(trailing_slash=False)
 router.register(r"produk", ProdukViewSet, basename="produk")

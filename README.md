@@ -55,7 +55,7 @@ Selanjutnya jalankan web browser lalu buka alamat `localhost:8000/api` ATAU dapa
 
 ### Testing API CRUD
 
-Langkah terakhir adalah melakukan testing API CRUD. Berikut adalah daftar url API (**HARUS** ada _trailing_slash_ ('/') di akhir URL).
+Langkah terakhir adalah melakukan testing API CRUD. Berikut adalah daftar url API.
 
 ### Produk
 
