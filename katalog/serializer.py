@@ -1,4 +1,4 @@
-from django.core.validators import RegexValidator, MinLengthValidator
+from django.core.validators import RegexValidator, MinLengthValidator, MinValueValidator
 from .models import Kategori, Produk, Status
 from rest_framework import serializers
 
@@ -21,9 +21,10 @@ class ProdukSerializer(serializers.ModelSerializer):
             MinLengthValidator(limit_value=1, message="nama produk tidak boleh kosong")
         ]
     )
-    harga = serializers.CharField(
+    harga = serializers.IntegerField(
         validators=[
-            RegexValidator(regex=r"^\d+$", message="hanya boleh diisi dengan angka")
+            RegexValidator(regex=r"^\d+$", message="hanya boleh diisi dengan angka"),
+            MinValueValidator(0, message="Harga tidak boleh Rp0"),
         ]
     )
 
@@ -41,11 +42,6 @@ class ProdukSerializer(serializers.ModelSerializer):
             "kategori": {"write_only": True},
             "status": {"write_only": True},
         }
-
-    def validasi_harga(self, value):
-        if value <= 0:
-            raise serializers.ValidationError("harga tidak boleh 0.")
-        return value
 
     def to_representation(self, instance):
         representasi = super().to_representation(instance)
