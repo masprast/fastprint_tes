@@ -182,12 +182,8 @@ Response:
 Endpoint: `produk/<int:id_produk>`
 Method: **DELETE**
 Query: -
-Data:-
-Response:
-
-```json
-
-```
+Data: -
+Response: -
 
 ### Kategori
 
@@ -196,7 +192,7 @@ Response:
 Endpoint: `kategori/`
 Method: **GET**
 Query: -
-Data:-
+Data: -
 Response:
 
 ```json
@@ -262,12 +258,8 @@ Response:
 Endpoint: `kategori/<int:id_kategori>`
 Method: **DELETE**
 Query: -
-Data:-
-Response:
-
-```json
-
-```
+Data: -
+Response: -
 
 ### Status
 
@@ -276,7 +268,7 @@ Response:
 Endpoint: `status/`
 Method: **GET**
 Query: -
-Data:-
+Data: -
 Response:
 
 ```json
@@ -341,9 +333,5 @@ Response:
 Endpoint: `status/<int:id_status>`
 Method: **DELETE**
 Query: -
-Data:-
-Response:
-
-```json
-
-```
+Data: -
+Response: -
