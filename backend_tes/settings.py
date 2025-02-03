@@ -30,7 +30,7 @@ SECRET_KEY = env("SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+APPEND_SLASH = False
 ALLOWED_HOSTS = ["*"]
 
 
