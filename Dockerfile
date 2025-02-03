@@ -39,7 +39,7 @@ RUN chmod +x django.sh
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN ls
+
 EXPOSE 8000
 
-ENTRYPOINT ["./django.sh"]
+ENTRYPOINT ["sh","./django.sh"]
