@@ -14,7 +14,6 @@ services:
 
   django:
     container_name: django
-    build: .
     image: masprast25/django_postgresql_produk
     ports:
       - 8000:8000
