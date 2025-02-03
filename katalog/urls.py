@@ -7,7 +7,7 @@ produk_detail = ProdukViewSet.as_view(
     {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
 )
 
-router = DefaultRouter()
+router = DefaultRouter(trailing_slash=False)
 router.register(r"produk", ProdukViewSet, basename="produk")
 router.register(r"kategori", KategoriViewSet, basename="kategori")
 router.register(r"status", StatusViewSet, basename="status")
