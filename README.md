@@ -49,7 +49,7 @@ docker-compose up --build &
 
 > Perintah di atas akan menjalankan sekaligus mengkonfigurasi Django dan Postgre
 
-Selanjutnya jalankan web browser lalu buka alamat `localhost:8000/api` ATAU dapat mencoba live demo yang telah saya deploy di [fastprinttes-production.up.railway.app](fastprinttes-production.up.railway.app/api).
+Selanjutnya jalankan web browser lalu buka alamat `localhost:8000/api` ATAU dapat mencoba live demo yang telah saya deploy di [fastprinttes-production.up.railway.app](fastprinttes-production.up.railway.app/api/).
 
 ---
 
@@ -63,11 +63,11 @@ Langkah terakhir adalah melakukan testing API CRUD. Berikut adalah daftar url AP
 
 #### Daftar semua produk
 
-Endpoint: `produk/`
-Method: **GET**
-Query: -
-Data: -
-Response:
+- Endpoint: `produk/`
+- Method: **GET**
+- Query: -
+- Data: -
+- Response:
 
 ```json
 [
@@ -93,11 +93,11 @@ Response:
 
 #### Daftar produk dengan filter status
 
-Endpoint: `produk/`
-Method: **GET**
-Query: `?status=1`
-Data: -
-Response:
+- Endpoint: `produk/`
+- Method: **GET**
+- Query: `?status=1`
+- Data: -
+- Response:
 
 ```json
 [
@@ -123,10 +123,10 @@ Response:
 
 #### Buat produk
 
-Endpoint: `produk/`
-Method: **POST**
-Query: -
-Data:
+- Endpoint: `produk/`
+- Method: **POST**
+- Query: -
+- Data:
 
 ```json
 {
@@ -137,7 +137,7 @@ Data:
 }
 ```
 
-Response:
+- Response:
 
 ```json
 {
@@ -152,10 +152,10 @@ Response:
 
 #### Ubah produk
 
-Endpoint: `produk/<int:id_produk>`
-Method: **PUT**
-Query: -
-Data:
+- Endpoint: `produk/<int:id_produk>`
+- Method: **PUT**
+- Query: -
+- Data:
 
 ```json
 {
@@ -166,7 +166,7 @@ Data:
 }
 ```
 
-Response:
+- Response:
 
 ```json
 {
@@ -181,21 +181,21 @@ Response:
 
 #### Hapus produk
 
-Endpoint: `produk/<int:id_produk>`
-Method: **DELETE**
-Query: -
-Data: -
-Response: -
+- Endpoint: `produk/<int:id_produk>`
+- Method: **DELETE**
+- Query: -
+- Data: -
+- Response: -
 
 ### Kategori
 
 #### Daftar semua kategori
 
-Endpoint: `kategori/`
-Method: **GET**
-Query: -
-Data: -
-Response:
+- Endpoint: `kategori/`
+- Method: **GET**
+- Query: -
+- Data: -
+- Response:
 
 ```json
 [
@@ -213,10 +213,10 @@ Response:
 
 #### Buat kategori
 
-Endpoint: `kategori/`
-Method: **POST**
-Query: -
-Data:
+- Endpoint: `kategori/`
+- Method: **POST**
+- Query: -
+- Data:
 
 ```json
 {
@@ -224,7 +224,7 @@ Data:
 }
 ```
 
-Response:
+- Response:
 
 ```json
 {
@@ -235,10 +235,10 @@ Response:
 
 #### Ubah kategori
 
-Endpoint: `kategori/<int:id_kategori>`
-Method: **PUT**
-Query: -
-Data:
+- Endpoint: `kategori/<int:id_kategori>`
+- Method: **PUT**
+- Query: -
+- Data:
 
 ```json
 {
@@ -246,7 +246,7 @@ Data:
 }
 ```
 
-Response:
+- Response:
 
 ```json
 {
@@ -257,21 +257,21 @@ Response:
 
 #### Hapus kategori
 
-Endpoint: `kategori/<int:id_kategori>`
-Method: **DELETE**
-Query: -
-Data: -
-Response: -
+- Endpoint: `kategori/<int:id_kategori>`
+- Method: **DELETE**
+- Query: -
+- Data: -
+- Response: -
 
 ### Status
 
 #### Daftar semua status
 
-Endpoint: `status/`
-Method: **GET**
-Query: -
-Data: -
-Response:
+- Endpoint: `status/`
+- Method: **GET**
+- Query: -
+- Data: -
+- Response:
 
 ```json
 [
@@ -288,10 +288,10 @@ Response:
 
 #### Buat status
 
-Endpoint: `status/`
-Method: **POST**
-Query: -
-Data:
+- Endpoint: `status/`
+- Method: **POST**
+- Query: -
+- Data:
 
 ```json
 {
@@ -299,7 +299,7 @@ Data:
 }
 ```
 
-Response:
+- Response:
 
 ```json
 {
@@ -310,10 +310,10 @@ Response:
 
 #### Ubah status
 
-Endpoint: `status/<int:id_status>`
-Method: **PUT**
-Query: -
-Data:
+- Endpoint: `status/<int:id_status>`
+- Method: **PUT**
+- Query: -
+- Data:
 
 ```json
 {
@@ -321,7 +321,7 @@ Data:
 }
 ```
 
-Response:
+- Response:
 
 ```json
 {
@@ -332,8 +332,8 @@ Response:
 
 #### Hapus status
 
-Endpoint: `status/<int:id_status>`
-Method: **DELETE**
-Query: -
-Data: -
-Response: -
+- Endpoint: `status/<int:id_status>`
+- Method: **DELETE**
+- Query: -
+- Data: -
+- Response: -
