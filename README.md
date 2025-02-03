@@ -57,6 +57,8 @@ Selanjutnya jalankan web browser lalu buka alamat `localhost:8000/api` ATAU dapa
 
 Langkah terakhir adalah melakukan testing API CRUD. Berikut adalah daftar url API.
 
+> \*NOTE: Edit terlebih dahulu file **/backend_tes/.env** dengan memberi _value_ pada tiap VAR.
+
 ### Produk
 
 #### Daftar semua produk
