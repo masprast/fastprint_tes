@@ -1,5 +1,5 @@
 .vscode
-env/
+venv/
 tmp/
 backend_tes/.env.copy
 *.sqlite3
