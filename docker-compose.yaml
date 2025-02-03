@@ -3,18 +3,29 @@ services:
   db:
     image: postgres:16-alpine
     restart: always
-    env_file:
-      - docker.env
-    volumes:
-      - postgresdb:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    volumes:
+      - postgresdb:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=backendtes
-      - POSTGRES_USER=backenduser
-      - POSTGRES_PASSWORD=backendpass
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
   django:
+    container_name: django
     build: .
+    image: masprast25/django_postgresql_produk
+    ports:
+      - 8000:8000
+    environment:
+      - PGUSER=${PGUSER}
+      - PGPASSWORD=${PGPASSWORD}
+      - PGDATABASE=${PGDATABASE}
+      - PGHOST=${PGHOST}
+      - PGPORT=${PGPORT}
+    depends_on:
+      - db
 
 volumes:
   postgresdb:

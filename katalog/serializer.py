@@ -6,13 +6,13 @@ from rest_framework import serializers
 class KategoriSerializer(serializers.ModelSerializer):
     class Meta:
         model = Kategori
-        fields = ["__all__"]
+        fields = ["id_kategori", "nama_kategori"]
 
 
 class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Status
-        fields = ["__all__"]
+        fields = ["id_status", "nama_status"]
 
 
 class ProdukSerializer(serializers.ModelSerializer):
@@ -41,6 +41,11 @@ class ProdukSerializer(serializers.ModelSerializer):
             "kategori": {"write_only": True},
             "status": {"write_only": True},
         }
+
+    def validasi_harga(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("harga tidak boleh 0.")
+        return value
 
     def to_representation(self, instance):
         representasi = super().to_representation(instance)
