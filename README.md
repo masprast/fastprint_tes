@@ -2,7 +2,7 @@
 
 Repositori ini ditujukan untuk proses rekrutmen untuk posisi _backend developer_. _Tech stack_ yang digunakan untuk repo ini adalah **Django** dan **Docker**.
 
-Demo ada di alamat [fastprinttes-production.up.railway.app](https://fastprinttes-production.up.railway.app/api)
+Demo ada di alamat [railway.app](https://fastprinttes-production.up.railway.app/api)
 
 ## Prerequisites
 
@@ -49,7 +49,7 @@ docker-compose up --build &
 
 > Perintah di atas akan menjalankan sekaligus mengkonfigurasi Django dan Postgre
 
-Selanjutnya jalankan web browser lalu buka alamat `localhost:8000/api` ATAU dapat mencoba live demo yang telah saya deploy di [fastprinttes-production.up.railway.app](https://fastprinttes-production.up.railway.app/api/).
+Selanjutnya jalankan web browser lalu buka alamat `localhost:8000/api` ATAU dapat mencoba live demo yang telah saya deploy di [railway.app](https://fastprinttes-production.up.railway.app/api/).
 
 ---
 
