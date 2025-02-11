@@ -31,7 +31,6 @@ USER backend
 COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-RUN ls /usr/lib/python3.10
 ENV PYTHONPATH /usr/lib/python3.10/dist-packages
 WORKDIR /app
 COPY --chown=backend:backendgroup . .
