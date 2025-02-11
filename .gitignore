@@ -4,3 +4,4 @@ tmp/
 backend_tes/.env.copy
 *.sqlite3
 takok.md
+gambar_md/
