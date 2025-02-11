@@ -55,7 +55,7 @@ Selanjutnya jalankan web browser lalu buka alamat `localhost:8000/api` ATAU dapa
 
 ### Testing API CRUD
 
-Langkah terakhir adalah melakukan testing API CRUD. Berikut adalah daftar url API.
+Langkah terakhir adalah melakukan testing API CRUD. Berikut adalah daftar url API. Dengan API root: `localhost:8000/api`
 
 > \*NOTE: Edit terlebih dahulu file **/backend_tes/.env** dengan memberi _value_ pada tiap VAR.
 
@@ -95,7 +95,7 @@ Langkah terakhir adalah melakukan testing API CRUD. Berikut adalah daftar url AP
 
 - Endpoint: `produk/`
 - Method: **GET**
-- Query: `?status=1`
+- Query: `?status=2`
 - Data: -
 - Response:
 

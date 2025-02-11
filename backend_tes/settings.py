@@ -29,8 +29,8 @@ environ.Env.read_env(os.path.join(BASE_DIR, "backend_tes", ".env"))
 SECRET_KEY = env("SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-APPEND_SLASH = False
+DEBUG = False
+# APPEND_SLASH = False
 ALLOWED_HOSTS = ["*"]
 
 

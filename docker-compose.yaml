@@ -25,6 +25,8 @@ services:
       - PGDATABASE=${PGDATABASE}
       - PGHOST=${PGHOST}
       - PGPORT=${PGPORT}
+    volumes:
+      - .:/app
     depends_on:
       - db
 
