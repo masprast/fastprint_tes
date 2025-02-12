@@ -32,7 +32,6 @@ COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/pytho
 COPY --from=builder /usr/local/bin /usr/local/bin
 ENV PYTHONPATH /usr/local/lib/python3.10/site-packages
 
-RUN ls /usr/lib/python3.12
 WORKDIR /app
 
 # RUN python3 -m venv venv && source venv/bin/activate
