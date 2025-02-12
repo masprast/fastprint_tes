@@ -33,12 +33,11 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 ENV PYTHONPATH /usr/local/lib/python3.10/site-packages
 
 WORKDIR /app
-# RUN python3 -m venv venv && source venv/bin/activate
-# ENV PYTHONPATH venv/lib/python3.10/site-packages
-RUN ls /usr/local/lib/python3.10/site-packages/rest_framework
+
+# RUN ls /usr/local/lib/python3.10/site-packages/rest_framework
 COPY --chown=backend:backendgroup . .
-# COPY /usr/local/lib/python3.10/site-packages/rest_framework/static/* static/*
-# RUN python3 manage.py collectstatic
+COPY /usr/local/lib/python3.10/site-packages/rest_framework/static/* static/*
+RUN python3 manage.py collectstatic
 
 RUN chmod +x django.sh
 ENV PYTHONDONTWRITEBYTECODE=1
