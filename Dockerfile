@@ -36,7 +36,7 @@ WORKDIR /app
 
 # RUN ls /usr/local/lib/python3.10/site-packages/rest_framework
 COPY --chown=backend:backendgroup . .
-COPY /usr/local/lib/python3.10/site-packages/rest_framework/static/* static/*
+COPY --from=builder /usr/local/lib/python3.10/site-packages/rest_framework/static/* static/*
 RUN python3 manage.py collectstatic
 
 RUN chmod +x django.sh
