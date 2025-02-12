@@ -4,6 +4,7 @@ FROM python:3.10-alpine AS builder
 RUN mkdir /app
 
 WORKDIR /app
+COPY requirements.txt /app/
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
@@ -14,10 +15,8 @@ RUN apk add --no-cache build-base python3-dev libpq postgresql-libs \
     gcc musl-dev postgresql-dev libpq-dev
 
 RUN python3 -m pip install --upgrade pip
-COPY requirements.txt /app/
 # RUN python3 -m venv venv && source /venv/bin/activate
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
-RUN find /usr/local/lib -type d -name 'python*'
 
 # Stage 2
 FROM python:3.10-alpine
@@ -32,6 +31,7 @@ USER backend
 
 COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
 COPY --from=builder /usr/local/bin /usr/local/bin
+RUN ls -d /usr/local/lib/python3.10
 
 ENV PYTHONPATH /usr/local/lib/python3.10/dist-packages
 WORKDIR /app
