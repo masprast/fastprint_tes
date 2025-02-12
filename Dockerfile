@@ -37,7 +37,8 @@ WORKDIR /app
 # ENV PYTHONPATH venv/lib/python3.10/site-packages
 
 COPY --chown=backend:backendgroup . .
-# RUN python3 manage.py collectstatic
+COPY /usr/local/lib/python3.10/site-packages/rest_framework/static static
+RUN python3 manage.py collectstatic
 
 RUN chmod +x django.sh
 ENV PYTHONDONTWRITEBYTECODE=1
