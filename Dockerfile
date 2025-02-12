@@ -15,7 +15,6 @@ RUN apk add --no-cache build-base python3-dev libpq postgresql-libs \
     gcc musl-dev postgresql-dev libpq-dev
 
 RUN python3 -m pip install --upgrade pip
-# RUN python3 -m venv venv && source /venv/bin/activate
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 # Stage 2
@@ -29,11 +28,14 @@ RUN apk add libpq-dev
 
 USER backend
 
-COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-ENV PYTHONPATH /usr/local/lib/python3.10/site-packages
+# ENV PYTHONPATH /usr/local/lib/python3.10/site-packages
 WORKDIR /app
+
+RUN python3 -m venv venv && source /venv/bin/activate
+COPY --from=builder /usr/local/lib/python3.10/site-packages /venv/lib/python3.10/site-packages
+
 COPY --chown=backend:backendgroup . .
 RUN ls
 
