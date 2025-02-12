@@ -30,7 +30,7 @@ USER backend
 
 COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
 COPY --from=builder /usr/local/bin /usr/local/bin
-RUN find /usr/lib/python3.10 -type d
+RUN ls -d /usr/lib/python3.10
 
 ENV PYTHONPATH /usr/lib/python3.10/site-packages
 WORKDIR /app
