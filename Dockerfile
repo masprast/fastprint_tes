@@ -31,11 +31,11 @@ USER backend
 
 COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
-RUN ls /usr/local/lib/python3.10/site-packages
 
 ENV PYTHONPATH /usr/local/lib/python3.10/site-packages
 WORKDIR /app
 COPY --chown=backend:backendgroup . .
+RUN ls
 
 RUN chmod +x django.sh
 ENV PYTHONDONTWRITEBYTECODE=1
