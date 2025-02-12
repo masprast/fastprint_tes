@@ -16,6 +16,7 @@ RUN apk add --no-cache build-base python3-dev libpq postgresql-libs \
 
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
+RUN find /usr/lib -type d -name 'python*'
 
 # Stage 2
 FROM python:3.10-alpine
@@ -30,9 +31,8 @@ USER backend
 
 COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
 COPY --from=builder /usr/local/bin /usr/local/bin
-RUN ls -d /usr/lib/python3.10
 
-ENV PYTHONPATH /usr/lib/python3.10/site-packages
+ENV PYTHONPATH /usr/local/lib/python3.10/dist-packages
 WORKDIR /app
 COPY --chown=backend:backendgroup . .
 
