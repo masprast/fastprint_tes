@@ -29,11 +29,11 @@ RUN apk add libpq-dev
 
 USER backend
 
-COPY --from=builder /usr/local/lib/python3.10 /usr/local/lib/python3.10
+COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
-RUN ls /usr/local/lib/python3.10
+RUN ls /usr/local/lib/python3.10/site-packages
 
-ENV PYTHONPATH /usr/local/lib/python3.10/dist-packages
+ENV PYTHONPATH /usr/local/lib/python3.10/site-packages
 WORKDIR /app
 COPY --chown=backend:backendgroup . .
 
