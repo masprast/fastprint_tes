@@ -28,16 +28,17 @@ RUN apk add libpq-dev
 
 USER backend
 
+COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
+ENV PYTHONPATH /usr/local/lib/python3.10/site-packages
 
+RUN ls /usr/lib/python3.10
 WORKDIR /app
 
-RUN python3 -m venv venv && source venv/bin/activate
-COPY --from=builder /usr/local/lib/python3.10/site-packages venv/lib/python3.10/site-packages
-ENV PYTHONPATH venv/lib/python3.10/site-packages
+# RUN python3 -m venv venv && source venv/bin/activate
+# ENV PYTHONPATH venv/lib/python3.10/site-packages
 
 COPY --chown=backend:backendgroup . .
-RUN ls
 
 RUN chmod +x django.sh
 ENV PYTHONDONTWRITEBYTECODE=1
